@@ -1,36 +1,30 @@
-main (){
-
-  int number = 2;
-  double doubleNumber = 20.12;
-  String name = 'Faiyaz';
-  bool isFalse = true;
-
-String firstName = "Md.Faiyaz";
-String lastName = 'Hossain';
-String fullName = '$firstName $lastName';
-print(fullName);
-print(fullName.toUpperCase());
-print(fullName.contains('Md'));
-print(fullName.length);
-
-
-int age = 18;
-double hight = 5.8;
-String information = '$age $hight';
-
-print(information);
-print(information.runtimeType);
-print(age.runtimeType);
-print(hight.runtimeType);
-
-//Try to Dynamic veriable
-dynamic persionInformetion = 'Srejon';
-persionInformetion = 18;
-persionInformetion = true;
-persionInformetion = 5.8;
-print(persionInformetion);
-print(persionInformetion.runtimeType);
-
-
-
+main () {
+  //Creating an object of car
+  Car myCar = Car();
+  //Setting speed
+  myCar.setSpeed(80);
+  //Calling move method
+  myCar.move();
 }
+
+//Abstract class Vehicle
+abstract class Vehicle {
+  double _speed = 0;
+  //Abstract method to be implemented by subclass
+  void move();
+  //Method to set speed
+  void setSpeed(double speed) {
+    _speed = speed;;
+  }
+  //Getter to safely acces speed in subclass
+  double get speed => _speed;
+}
+
+//Subclass car extending vehicle
+class Car extends Vehicle {
+  @override
+  void move() {
+    print("The car is moving at $speed km/h.");
+  }
+}
+
